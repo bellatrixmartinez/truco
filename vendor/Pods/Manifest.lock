@@ -1,0 +1,10 @@
+PODS:
+  - SEDraggable (1.0.0)
+
+DEPENDENCIES:
+  - SEDraggable
+
+SPEC CHECKSUMS:
+  SEDraggable: bc30704891403655e31b453a2e9b436420f46adc
+
+COCOAPODS: 0.27.1

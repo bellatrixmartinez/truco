@@ -1,0 +1,536 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<string_constant name='kALLOW_COLUMNS_KEY' nsstring='true' value='allowColumns'/>
+<string_constant name='kALLOW_ROWS_KEY' nsstring='true' value='allowRows'/>
+<string_constant name='kANIMATION_DELAY_KEY' nsstring='true' value='animationDelay'/>
+<string_constant name='kANIMATION_DURATION_KEY' nsstring='true' value='animationDuration'/>
+<string_constant name='kANIMATION_OPTIONS_KEY' nsstring='true' value='animationOptions'/>
+<string_constant name='kCONTAINED_OBJECTS_KEY' nsstring='true' value='containedObjects'/>
+<string_constant name='kCURRENT_LOCATION_KEY' nsstring='true' value='currentLocation'/>
+<string_constant name='kDELEGATE_KEY' nsstring='true' value='delegate'/>
+<string_constant name='kDROPPABLE_LOCATIONS_KEY' nsstring='true' value='droppableLocations'/>
+<string_constant name='kFILL_HORIZONTALLY_FIRST_KEY' nsstring='true' value='fillHorizontallyFirst'/>
+<string_constant name='kFIRST_X_KEY' nsstring='true' value='firstX'/>
+<string_constant name='kFIRST_Y_KEY' nsstring='true' value='firstY'/>
+<string_constant name='kHIGHLIGHT_COLOR_KEY' nsstring='true' value='highlightColor'/>
+<string_constant name='kHIGHLIGHT_OPACITY_KEY' nsstring='true' value='highlightOpacity'/>
+<string_constant name='kHOME_LOCATION_KEY' nsstring='true' value='homeLocation'/>
+<string_constant name='kMARGIN_BETWEEN_X_KEY' nsstring='true' value='marginBetweenX'/>
+<string_constant name='kMARGIN_BETWEEN_Y_KEY' nsstring='true' value='marginBetweenY'/>
+<string_constant name='kMARGIN_BOTTOM_KEY' nsstring='true' value='marginBottom'/>
+<string_constant name='kMARGIN_LEFT_KEY' nsstring='true' value='marginLeft'/>
+<string_constant name='kMARGIN_RIGHT_KEY' nsstring='true' value='marginRight'/>
+<string_constant name='kMARGIN_TOP_KEY' nsstring='true' value='marginTop'/>
+<string_constant name='kOBJECT_GUTTER_BOUNDS_KEY' nsstring='true' value='objectGutterBounds'/>
+<string_constant name='kOBJECT_HEIGHT_KEY' nsstring='true' value='objectHeight'/>
+<string_constant name='kOBJECT_WIDTH_KEY' nsstring='true' value='objectWidth'/>
+<string_constant name='kPAN_GESTURE_RECOGNIZER_KEY' nsstring='true' value='panGestureRecognizer'/>
+<string_constant name='kPREVIOUS_LOCATION_KEY' nsstring='true' value='previousLocation'/>
+<string_constant name='kRANDOM_ARRANGEMENT_OFFSET_MULTIPLIER_KEY' nsstring='true' value='randomArrangementOffsetMultiplier'/>
+<string_constant name='kRESPONSIVE_BOUNDS_KEY' nsstring='true' value='responsiveBounds'/>
+<string_constant name='kSHOULD_ACCEPT_DROPPED_OBJECTS_KEY' nsstring='true' value='shouldAcceptDroppedObjects'/>
+<string_constant name='kSHOULD_ACCEPT_OBJECTS_SNAPPING_BACK_KEY' nsstring='true' value='shouldAcceptObjectsSnappingBack'/>
+<string_constant name='kSHOULD_ANIMATE_OBJECT_ADJUSTMENTS_KEY' nsstring='true' value='shouldAnimateObjectAdjustments'/>
+<string_constant name='kSHOULD_HIGHLIGHT_ON_DRAG_OVER_KEY' nsstring='true' value='shouldHighlightOnDragOver'/>
+<string_constant name='kSHOULD_KEEP_OBJECTS_ARRANGED_KEY' nsstring='true' value='shouldKeepObjectsArranged'/>
+<string_constant name='kSHOULD_SNAP_BACK_TO_HOME_LOCATION_KEY' nsstring='true' value='shouldSnapBackToHomeLocation'/>
+<enum name='SEDraggableLocationEntryMethodWantsToSnapBack' value='2'/>
+<enum name='SEDraggableLocationEntryMethodWasAdded' value='3'/>
+<enum name='SEDraggableLocationEntryMethodWasDropped' value='1'/>
+<class name='NSObject'>
+<method selector='draggableLocation:didAcceptObject:entryMethod:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='method' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didAllowEntry:animated:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='1' name='entryMethod' type='i'/>
+<arg declared_type='BOOL' index='2' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didMoveObject:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didRefuseEntry:animated:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='1' name='entryMethod' type='i'/>
+<arg declared_type='BOOL' index='2' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didRefuseObject:entryMethod:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='method' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocationDidRecalculateObjectPositions:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:didMoveWithinLocation:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:didStopMovingWithinLocation:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:failedToEnterLocation:withEntryMethod:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:finishedEnteringLocation:withEntryMethod:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:shouldAskToEnterLocation:withEntryMethod:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='draggableObject:wasAddedToLocation:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:wasRemovedFromLocation:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:willAskToEnterLocation:withEntryMethod:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectDidMove:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectDidStopMoving:'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='SEDraggable'>
+<method selector='addAllowedDropLocation:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='askToDropIntoLocation:animated:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='askToSnapBackToLocation:animated:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='currentLocation'>
+<retval declared_type='SEDraggableLocation*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='droppableLocations'>
+<retval declared_type='NSMutableSet*' type='@'/>
+</method>
+<method selector='firstX'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='firstY'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='homeLocation'>
+<retval declared_type='SEDraggableLocation*' type='@'/>
+</method>
+<method selector='initWithImage:andSize:'>
+<arg declared_type='UIImage*' index='0' name='image' type='@'/>
+<arg declared_type='CGSize' index='1' name='size' type='{CGSize=ff}' type64='{CGSize=dd}'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithImageView:'>
+<arg declared_type='UIImageView*' index='0' name='imageView' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='panGestureRecognizer'>
+<retval declared_type='UIPanGestureRecognizer*' type='@'/>
+</method>
+<method selector='previousLocation'>
+<retval declared_type='SEDraggableLocation*' type='@'/>
+</method>
+<method selector='setCurrentLocation:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='currentLocation' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDroppableLocations:'>
+<arg declared_type='NSMutableSet*' index='0' name='droppableLocations' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHomeLocation:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='homeLocation' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPanGestureRecognizer:'>
+<arg declared_type='UIPanGestureRecognizer*' index='0' name='panGestureRecognizer' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPreviousLocation:'>
+<arg declared_type='SEDraggableLocation*' index='0' name='previousLocation' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldSnapBackToHomeLocation:'>
+<arg declared_type='BOOL' index='0' name='shouldSnapBackToHomeLocation' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='shouldSnapBackToHomeLocation'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='snapCenterToPoint:animated:completion:'>
+<arg declared_type='CGPoint' index='0' name='point' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<arg declared_type='void (^)(BOOL)' function_pointer='true' index='2' name='completionBlock' type='@?'>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='SEDraggableLocation'>
+<method selector='addDraggableObject:animated:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='allowColumns'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='allowRows'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='animationDelay'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='animationDuration'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='animationOptions'>
+<retval declared_type='UIViewAnimationOptions' type='I' type64='Q'/>
+</method>
+<method selector='containedObjects'>
+<retval declared_type='NSMutableArray*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='draggableObject:wantsToEnterLocationWithEntryMethod:animated:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='1' name='entryMethod' type='i'/>
+<arg declared_type='BOOL' index='2' name='animated' type='B'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='draggableObjectDidMoveOutsideBounds:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectDidMoveWithinBounds:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectWantsToSnapBack:animated:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='draggableObjectWasDroppedInside:animated:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<arg declared_type='BOOL' index='1' name='animated' type='B'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='fillHorizontallyFirst'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='highlightColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method selector='highlightOpacity'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='marginBetweenX'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='marginBetweenY'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='marginBottom'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='marginLeft'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='marginRight'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='marginTop'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='objectGutterBounds'>
+<retval declared_type='UIView*' type='@'/>
+</method>
+<method selector='objectHeight'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='objectWidth'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='pointIsInsideResponsiveBounds:'>
+<arg declared_type='CGPoint' index='0' name='point' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='randomArrangementOffsetMultiplier'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='recalculateAllObjectPositions'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='removeDraggableObject:'>
+<arg declared_type='SEDraggable*' index='0' name='draggable' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='responsiveBounds'>
+<retval declared_type='UIView*' type='@'/>
+</method>
+<method selector='setAllowColumns:'>
+<arg declared_type='BOOL' index='0' name='allowColumns' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAllowRows:'>
+<arg declared_type='BOOL' index='0' name='allowRows' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAnimationDelay:'>
+<arg declared_type='CGFloat' index='0' name='animationDelay' type='f' type64='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAnimationDuration:'>
+<arg declared_type='CGFloat' index='0' name='animationDuration' type='f' type64='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAnimationOptions:'>
+<arg declared_type='UIViewAnimationOptions' index='0' name='animationOptions' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setContainedObjects:'>
+<arg declared_type='NSMutableArray*' index='0' name='containedObjects' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFillHorizontallyFirst:'>
+<arg declared_type='BOOL' index='0' name='fillHorizontallyFirst' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHighlightColor:'>
+<arg declared_type='UIColor*' index='0' name='highlightColor' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHighlightOpacity:'>
+<arg declared_type='CGFloat' index='0' name='highlightOpacity' type='f' type64='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginBetweenX:'>
+<arg declared_type='float' index='0' name='marginBetweenX' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginBetweenY:'>
+<arg declared_type='float' index='0' name='marginBetweenY' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginBottom:'>
+<arg declared_type='float' index='0' name='marginBottom' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginLeft:'>
+<arg declared_type='float' index='0' name='marginLeft' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginRight:'>
+<arg declared_type='float' index='0' name='marginRight' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMarginTop:'>
+<arg declared_type='float' index='0' name='marginTop' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObjectGutterBounds:'>
+<arg declared_type='UIView*' index='0' name='objectGutterBounds' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObjectHeight:'>
+<arg declared_type='float' index='0' name='objectHeight' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObjectWidth:'>
+<arg declared_type='float' index='0' name='objectWidth' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setRandomArrangementOffsetMultiplier:'>
+<arg declared_type='float' index='0' name='randomArrangementOffsetMultiplier' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setResponsiveBounds:'>
+<arg declared_type='UIView*' index='0' name='responsiveBounds' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldAcceptDroppedObjects:'>
+<arg declared_type='BOOL' index='0' name='shouldAcceptDroppedObjects' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldAcceptObjectsSnappingBack:'>
+<arg declared_type='BOOL' index='0' name='shouldAcceptObjectsSnappingBack' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldAnimateObjectAdjustments:'>
+<arg declared_type='BOOL' index='0' name='shouldAnimateObjectAdjustments' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldHighlightOnDragOver:'>
+<arg declared_type='BOOL' index='0' name='shouldHighlightOnDragOver' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShouldKeepObjectsArranged:'>
+<arg declared_type='BOOL' index='0' name='shouldKeepObjectsArranged' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='shouldAcceptDroppedObjects'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='shouldAcceptObjectsSnappingBack'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='shouldAnimateObjectAdjustments'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='shouldHighlightOnDragOver'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='shouldKeepObjectsArranged'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='UIView'>
+<method selector='getCenterInWindowCoordinates'>
+<retval declared_type='CGPoint' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+</method>
+</class>
+<informal_protocol name='SEDraggableEventResponder'>
+<method selector='draggableObject:didMoveWithinLocation:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:didStopMovingWithinLocation:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:failedToEnterLocation:withEntryMethod:' type='v20@0:4@8@12i16' type64='v36@0:8@16@24i32'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:finishedEnteringLocation:withEntryMethod:' type='v20@0:4@8@12i16' type64='v36@0:8@16@24i32'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:shouldAskToEnterLocation:withEntryMethod:' type='B20@0:4@8@12i16' type64='B36@0:8@16@24i32'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='draggableObject:willAskToEnterLocation:withEntryMethod:' type='v20@0:4@8@12i16' type64='v36@0:8@16@24i32'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='entryMethod' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectDidMove:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObjectDidStopMoving:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='SEDraggableLocationClient'>
+<method selector='draggableLocation:didAllowEntry:animated:' type='v20@0:4@8i12B16' type64='v32@0:8@16i24B28'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='1' name='entryMethod' type='i'/>
+<arg declared_type='BOOL' index='2' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didRefuseEntry:animated:' type='v20@0:4@8i12B16' type64='v32@0:8@16i24B28'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='1' name='entryMethod' type='i'/>
+<arg declared_type='BOOL' index='2' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='SEDraggableLocationEventResponder'>
+<method selector='draggableLocation:didAcceptObject:entryMethod:' type='v20@0:4@8@12i16' type64='v36@0:8@16@24i32'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='method' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didMoveObject:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocation:didRefuseObject:entryMethod:' type='v20@0:4@8@12i16' type64='v36@0:8@16@24i32'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<arg declared_type='SEDraggable*' index='1' name='object' type='@'/>
+<arg declared_type='SEDraggableLocationEntryMethod' index='2' name='method' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableLocationDidRecalculateObjectPositions:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='SEDraggableLocation*' index='0' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:wasAddedToLocation:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='draggableObject:wasRemovedFromLocation:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='SEDraggable*' index='0' name='object' type='@'/>
+<arg declared_type='SEDraggableLocation*' index='1' name='location' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+</signatures>
