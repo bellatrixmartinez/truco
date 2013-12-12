@@ -9,9 +9,9 @@ rescue LoadError
 end
 
 require 'motion-cocoapods'
+require 'truco'
 
 Motion::Project::App.setup do |app|
-  # Use `rake config' to see complete project settings.
   app.name = 'truco'
   app.device_family = [:iphone,:ipad]
   app.pods do
