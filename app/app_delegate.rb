@@ -24,113 +24,165 @@ class Window
   end
 end
 
-class WelcomeController < UIViewController
+class Card
 
-  def viewDidLoad
-    puts Window.new.height
-    puts Window.new.width
-    @deck = Deck.new
-    build_game
+  def self.height
+    75
+  end
 
-    Motion::Layout.new do |layout|
-      layout.view self.view
-      layout.subviews "p1c1" => @p1c1, "p1c2" => @p1c2, "p1c3" => @p1c3
-      layout.metrics "height" => 90, "width" => 60, "margin" => 50
-      layout.vertical "|-50-[p1c1(==height)]-[p1c2(==height)]-[p1c3(==height)]-(>=300)-|"
-      layout.horizontal"|-(>=margin)-[p1c1(==width)]-0-[p1c2(==width)]-0-[p1c3(==width)]-(>=margin)-|"
+  def self.width
+    40
+  end
 
-      #layout.horizontal "|-10-[switch]-10-|"
-      #layout.horizontal "|-10-[help]-10-|"
+  def self.first
+    40
+  end
+
+  def self.second
+    150
+  end
+
+  def self.third
+    240
+  end
+
+  def self.top
+    40
+  end
+
+  def self.bottom
+    420
+  end
+
+end
+
+class Player
+  attr_accessor :card_buttons
+end
+
+
+class TrucoBoton < UIButton
+  attr_accessor :player, :card
+end
+
+
+module Drawing
+
+  def draw_cards_for_player(player, position)
+    player.cards.each  do |card| 
+      button = draw_card(card.to_s)
+      button.player = player
+      button.card = card
+      player.card_buttons << button
+    end
+
+    player.card_buttons[0].frame = [[Card.first, position], [Card.width, Card.height]]
+    player.card_buttons[1].frame = [[Card.second, position], [Card.width, Card.height]]
+    player.card_buttons[2].frame = [[Card.third, position], [Card.width, Card.height]]
+  end
+
+  def draw_vira(vira)
+    c = draw_card vira
+    c.frame = [[ window.width / 2 , window.height / 2 ], [Card.width, Card.height]]
+  end
+
+  def draw_card(title)
+    button = TrucoBoton.buttonWithType(UIButtonTypeRoundedRect)
+    button.setTitle(title, forState:UIControlStateNormal)
+    button.addTarget(self, action:("imageMoved:withEvent:"), forControlEvents:UIControlEventTouchDragInside)
+    button.addTarget(self,action:("press:"), forControlEvents:UIControlEventTouchUpInside)
+    button.backgroundColor = UIColor.blackColor
+    view.addSubview(button)
+    button
+  end
+end
+
+module Actions
+  def press(sender)
+    puts "PASO POR AQUI"
+    puts sender.inspect
+    puts sender.player.inspect
+    puts sender.card.inspect
+    animate_card_move(sender)
+
+    if @plays <= 1
+      @game.play_first_hand(sender.player,sender.card)
+    elsif @plays <= 3
+      @game.play_second_hand(sender.player, sender.card)
+    else
+      @game.play_third_hand(sender.player, sender.card)
+    end
+
+    @plays += 1
+    puts @game.to_s
+
+
+
+    if @plays == 6
+      alert_winner
+      build_game
+      @plays = 0
     end
   end
 
-
-  def build_game
-    @player1 = Player.new
-    @player2 = Player.new
-    @game = Truco.new [@player1, @player2]
-    @game.deal_to_players
-    puts @game.to_s
-    puts "PASO POR AQUI"
-
-
-    @p1c1= draw_card @player1.cards[0].to_s
-    @p1c2= draw_card @player1.cards[1].to_s
-    @p1c3= draw_card @player1.cards[2].to_s
-
-    @p2_card1 = draw_card @player2.cards[0].to_s
-    @p2_card2 = draw_card @player2.cards[1].to_s
-    @p2_card3 = draw_card @player2.cards[2].to_s
-
-    nil
-  end 
-
-  def draw_card(title)
-    button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    button.setTitle(title, forState:UIControlStateNormal)
-    button.addTarget(self, action:("imageMoved:withEvent:"), forControlEvents:UIControlEventTouchDragInside)
-    button
+  def alert_winner
+    App.alert("#{@game.winner.nickname}")
   end
 
-  def press(sender) ; end
+  def animate_card_move(b)
+    puts b.frame.inspect
+    if b.frame.origin.y < 150
+      #rmq(b).nudge(d: 120)
+      rmq(b).animations.drop_and_spin
+    else
+      rmq(b).animations.drop_and_spin
+      #rmq(b).nudge(u:120)
+    end
+  end
 
   def imageMoved(sender, withEvent: event)
+    puts sender.inspect
     point = event.allTouches.anyObject.locationInView(self.view)
     control = sender
     control.center = point
   end
-
 end
 
-class CardFactory
+class WelcomeController < UIViewController
 
-  attr_accessor :action, :frame, :title, :target_object, :color
+  include Drawing
+  include Actions
 
+  def viewDidLoad
 
-  def create
-    #TODO: Raise if there is no action, frame or title
-
-    boton = UIButton.buttonWithType(UIButtonTypeCustom)
-    boton.setTitle(title, forState:UIControlStateNormal)
-    #boton.frame = frame
-    boton.font = UIFont.fontWithName("Bebas Neue", size:size) 
-    boton.setTitleColor(UIColor.whiteColor, forState:UIControlStateNormal)    
-    boton.addTarget(target_object, action:action, forControlEvents:UIControlEventTouchUpInside)
-    boton.clipsToBounds = true
-    boton.backgroundColor = color
-    boton.layer.setCornerRadius(5)
-    boton.setTitleColor(font_color,forState:UIControlStateNormal)
-
-    boton
+    @plays = 0
+    view.backgroundColor = UIColor.whiteColor
+    puts Window.new.height
+    puts Window.new.width
+    build_game
   end
 
-  def font_color
-    UIColor.whiteColor
+
+  def window
+    @window ||= Window.new
   end
 
-  def color
-    BubbleWrap.rgb_color(155,155,155)
-  end
+  def build_game
+    @player1 = Player.new "Ivan"
+    @player1.card_buttons = []
+    @player2 = Player.new "Bellatrix"
+    @player2.card_buttons = []
+    @game = Truco.new [@player1, @player2]
+    @game.deal_to_players
 
-  def size
-    34
-  end
+    draw_cards_for_player(@player1, Card.top)
+    draw_cards_for_player(@player2, Card.bottom)
+    draw_vira(@game.vira.card.to_s)
 
-end
-
-
-class GreyButton < CardFactory
-
-  def font_color
-    BubbleWrap.rgb_color(87,86,86)
-  end
-
-  def color
-    BubbleWrap.rgb_color(202,201,201)
-  end
-
-  def size
-    30
+    puts @game.to_s
+    #@game.play
+    #puts @game.winner.nickname
+    nil
   end
 
 end
