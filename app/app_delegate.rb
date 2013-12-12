@@ -35,7 +35,7 @@ class Card
   end
 
   def self.first
-    40
+    100
   end
 
   def self.second
@@ -43,7 +43,7 @@ class Card
   end
 
   def self.third
-    240
+    200
   end
 
   def self.top
@@ -113,10 +113,10 @@ module Actions
       @game.play_third_hand(sender.player, sender.card)
     end
 
+    display_winner_on_debug
+
     @plays += 1
     puts @game.to_s
-
-
 
     if @plays == 6
       alert_winner
@@ -154,12 +154,10 @@ class WelcomeController < UIViewController
   include Actions
 
   def viewDidLoad
-
-    @plays = 0
     view.backgroundColor = UIColor.whiteColor
-    puts Window.new.height
-    puts Window.new.width
     build_game
+    add_debug_textfield
+    add_player_info
   end
 
 
@@ -168,6 +166,7 @@ class WelcomeController < UIViewController
   end
 
   def build_game
+    @plays = 0
     @player1 = Player.new "Ivan"
     @player1.card_buttons = []
     @player2 = Player.new "Bellatrix"
@@ -183,6 +182,33 @@ class WelcomeController < UIViewController
     #@game.play
     #puts @game.winner.nickname
     nil
+  end
+
+  def add_debug_textfield
+    @debug_info = UITextField.alloc.init
+    @debug_info.text = "This is working"
+    @debug_info.frame = [[0,200], [200,100]]
+    view.addSubview(@debug_info)
+  end
+
+  def add_player_info
+    @ivan_label = UITextField.alloc.init
+    @ivan_label.text = "Ivan"
+    @ivan_label.frame = [[10,20], [100,20]]
+    view.addSubview(@ivan_label)
+
+    @bellatrix_label = UITextField.alloc.init
+    @bellatrix_label.text = "Bellatrix"
+    @bellatrix_label.frame = [[10,Card.bottom], [100,20]]
+    view.addSubview(@bellatrix_label)
+  end
+
+  def display_winner_on_debug
+    t = "first hand: #{@game.first_hand_winner.nickname}" if @plays == 1
+    t = "second hand: #{@game.second_hand_winner.nickname}" if @plays == 3
+    t = "this hand: #{@game.third_hand_winner.nickname}" if @play == 6
+
+    @debug_info.text = t
   end
 
 end
